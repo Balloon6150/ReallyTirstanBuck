@@ -4,3 +4,7 @@ More info on Tristan buck
 |
 V
 Each dollar is actually a 9 digit long binary string kept with a pin ( randomly generated give multiple variables ) and a Name as the txt name.
+
+Currently only the treasury can use the commit because I cannot hide the pin within the script
+
+The github repo: [text](https://github.com/Balloon6150/ReallyTirstanBuck.git)
