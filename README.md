@@ -7,4 +7,4 @@ Each dollar is actually a 9 digit long binary string kept with a pin ( randomly 
 
 Currently only the treasury can use the commit because I cannot hide the pin within the script
 
-The github repo: [text](https://github.com/Balloon6150/ReallyTirstanBuck.git)
+[The GitHub Repo](https://github.com/Balloon6150/ReallyTirstanBuck.git)
