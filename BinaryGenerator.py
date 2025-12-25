@@ -1,16 +1,27 @@
-print("It has started")
-# Name input
-user_name = input("Enter your name to register under: ")
-print("Hello, " + user_name + "!")
-#Generate a binary string of length 9 with random 0s and 1s
 import os
 import random
+import sys
+
+print("It has started")
+# Name input
+previous_total_string = open("Total Binary String.txt", "r").read() if os.path.exists("Total Binary String.txt") else "Total Binary String.txt does not exist. Please pull the file from the github repo and paste it in the same folder as this script, and restart."
+user_name = input("Enter your name to register under: ")
+num_combinatons = previous_total_string.count("/")
+print("Hello, " + user_name + "!")
+#Generate a binary string of length 9 with random 0s and 1s
 def generate_binary_string(length=9):
     return ''.join(random.choice('01') for _ in range(length))
+#Split the previous total string by forward slashes to get existing binary strings
+existing_binaries = previous_total_string.split("/") if previous_total_string != "Total Binary String.txt" else []# Check if the binary string exists in the previous total string
 binary_string = generate_binary_string()
-print("Generated binary string:", binary_string)
-# Put the binary string into a longer string ending with an forward slash
-previous_total_string = open("Total Binary String.txt", "r").read() if os.path.exists("Total Binary String.txt") else "Total Binary String.txt does not exist. Please pull the file from the github repo and paste it in the same folder as this script, and restart."
+
+if binary_string in existing_binaries:
+    print("You have successfully generated an unique binary string. Your brinary string is:", binary_string)
+else:
+    print("The string generated exists, you must regenerate. You might check to see if you have every single possible binary string of length 9 already generated.")
+    print("There are", num_combinatons, "unique binary strings in the total string.")
+    def restart_script(): os.execv(sys.executable, ['python'] + sys.argv)
+    restart_script()
 total_string = previous_total_string + binary_string + "/"
 open("Total Binary String.txt", "w").write(total_string)
 print("Total string:", total_string)
