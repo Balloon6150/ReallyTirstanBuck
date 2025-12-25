@@ -15,7 +15,7 @@ def generate_binary_string(length=9):
 existing_binaries = previous_total_string.split("/") if previous_total_string != "Total Binary String.txt" else []# Check if the binary string exists in the previous total string
 binary_string = generate_binary_string()
 
-if binary_string in existing_binaries:
+if binary_string not in existing_binaries:
     print("You have successfully generated an unique binary string. Your brinary string is:", binary_string)
 else:
     print("The string generated exists, you must regenerate. You might check to see if you have every single possible binary string of length 9 already generated.")
@@ -36,17 +36,17 @@ print("Generating pin...")
 
 # First Convert Binary String to Integer
 binary_integer = int(binary_string, 2)
-# Then multiply binary_integer by the number of number of forward slashes in total_string
+print(binary_integer)
+# Then multiply binary_integer by the number of number of forward slashes in total_string -- ACTUALLY IGNORED UNTIL LATER
 num_slashes = total_string.count("/")
-pin_integer = binary_integer * num_slashes
 # Multiply the Pin by a constant factor to ensure it's a larger number 
 secondary_factor = input("Would you like to enter a secondary factor to increase pin complexity? (y/n): ")
 if secondary_factor.lower() == "y":
     secondary_factor = int(input("Enter a secondary factor: "))
-    pin_integer = pin_integer * secondary_factor
+    pin_integer = binary_integer * secondary_factor
 else:
-    pin_integer = pin_integer * 1593
-pin_integer = pin_integer % 9999  # Ensure it's a 4-digit number
+    pin_integer = binary_integer * 1593
+pin_integer = pin_integer % 10000  # Ensure it's a 4-digit number
 # Format the pin to be exactly 4 digits, padding with leading zeros if necessary
 pin_string = f"{pin_integer:04d}"
 print("Generated 4-digit pin:", pin_string, "(Keep this pin safe, to be able to cash use your dollar. You will need it later.)")
